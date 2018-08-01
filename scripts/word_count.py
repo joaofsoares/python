@@ -1,29 +1,37 @@
-import itertools  # import itertools to use groupby
+from itertools import groupby  # import groupby from itertools
 
 
-def word_count(input_list):
+def word_count(file):
+
     # create a function to get the tuple key
-    def getKey(item):
-        return item[0]
+    # def getKey(item):
+    #   return item[0]
 
     # create a function to get the tuple value
     def getValue(item):
         return item[1]
 
-    # flatmap the lists of input_list
-    flatten_list = ''.join(list(map(lambda line: line + ' ', input_list)))
+    # open the file in another directory
+    with open(file) as my_file:
+        # get all lines from the file
+        lines = my_file.readlines()
 
-    # group by the word encountered into flatten_list
-    result_list = [(key, sum(y for x, y in value)) for key, value in itertools.groupby(
-        sorted(map(lambda w: (w, 1), flatten_list.split())), lambda x: x[0])]
+        # flatmap the lists of input_list
+        flatten_list = ''.join([line.replace('\n', ' ') for line in lines])
 
-    # return the list of counted words sorted by the highest number
-    return sorted(result_list, key=getValue, reverse=True)
+        # create tuple for word and number
+        tuple_list = [(word, 1) for word in flatten_list.split()]
+
+        # group by the word encountered into tuple_list
+        result_list = [(key, sum(y for x, y in value)) for key,
+                       value in groupby(sorted(tuple_list), lambda x: x[0])]
+
+        # return the list of counted words sorted by the highest number
+        return sorted(result_list, key=getValue, reverse=True)
 
 
 # create a list of strings. the model is used when you read a file with a lot of lines
-counted_list = word_count(['this is a long string to test the development',
-                           'here is another string just to test'])
+number_of_words = word_count('..\\iofile\\myfile.txt')
 
 # print into console the result
-print(counted_list)
+print(number_of_words)
