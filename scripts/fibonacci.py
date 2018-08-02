@@ -12,5 +12,6 @@ def fib(num):
     # call fib helper passing the initial values
     return fibHelper(num, 0, 1)
 
+
 # print the result
 print(fib(10))

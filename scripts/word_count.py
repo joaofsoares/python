@@ -8,7 +8,7 @@ def word_count(file):
     #   return item[0]
 
     # create a function to get the tuple value
-    def getValue(item):
+    def get_value(item):
         return item[1]
 
     # open the file in another directory
@@ -16,7 +16,7 @@ def word_count(file):
         # get all lines from the file
         lines = my_file.readlines()
 
-        # flatmap the lists of input_list
+        # flat map the lists of input_list
         flatten_list = ''.join([line.replace('\n', ' ') for line in lines])
 
         # create tuple for word and number
@@ -27,7 +27,7 @@ def word_count(file):
                        value in groupby(sorted(tuple_list), lambda x: x[0])]
 
         # return the list of counted words sorted by the highest number
-        return sorted(result_list, key=getValue, reverse=True)
+        return sorted(result_list, key=get_value, reverse=True)
 
 
 # create a list of strings. the model is used when you read a file with a lot of lines

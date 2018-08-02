@@ -7,3 +7,7 @@
 - Word Count
 
 - IO Files
+
+- Pig Latin function
+
+- Arguments
