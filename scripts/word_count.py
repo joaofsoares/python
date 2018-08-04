@@ -16,8 +16,8 @@ def word_count(file):
         # get all lines from the file
         lines = my_file.readlines()
 
-        # flat map the lists of input_list
-        flatten_list = ''.join([line.replace('\n', ' ') for line in lines])
+        # flat map the lists of lines
+        flatten_list = ' '.join(lines)
 
         # create tuple for word and number
         tuple_list = [(word, 1) for word in flatten_list.split()]
