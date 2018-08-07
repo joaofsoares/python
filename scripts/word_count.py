@@ -1,8 +1,11 @@
 from itertools import groupby  # import groupby from itertools
 
 
-def word_count(file):
+def transform_tuple(value):
+    return value, 1
 
+
+def word_count(file):
     # create a function to get the tuple key
     # def getKey(item):
     #   return item[0]
@@ -20,11 +23,11 @@ def word_count(file):
         flatten_list = ' '.join(lines)
 
         # create tuple for word and number
-        tuple_list = [(word, 1) for word in flatten_list.split()]
+        tuple_list = list(map(transform_tuple, flatten_list.split()))
 
         # group by the word encountered into tuple_list
-        result_list = [(key, sum(y for x, y in value)) for key,
-                       value in groupby(sorted(tuple_list), lambda x: x[0])]
+        result_list = [(key, sum(y for x, y in value)) for key, value
+                       in groupby(sorted(tuple_list), lambda x: x[0])]
 
         # return the list of counted words sorted by the highest number
         return sorted(result_list, key=get_value, reverse=True)
