@@ -1,11 +1,20 @@
+'''
+Word count script
+'''
 from itertools import groupby  # import groupby from itertools
 
 
 def transform_tuple(value):
+    '''
+    transform value in a tuple (value, 1)
+    '''
     return value, 1
 
 
 def word_count(file):
+    '''
+    Receive a file and read all lines counting each word into the file
+    '''
     # create a function to get the tuple key
     # def getKey(item):
     #   return item[0]
@@ -34,7 +43,7 @@ def word_count(file):
 
 
 # create a list of strings. the model is used when you read a file with a lot of lines
-number_of_words = word_count('..\\iofile\\myfile.txt')
+NUMBER_OF_WORDS = word_count('..\\iofile\\myfile.txt')
 
 # print into console the result
-print(number_of_words)
+print(NUMBER_OF_WORDS)
