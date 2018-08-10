@@ -2,13 +2,14 @@
 Word count script
 '''
 from itertools import groupby  # import groupby from itertools
+import string  # import string
 
 
 def transform_tuple(value):
     '''
     transform value in a tuple (value, 1)
     '''
-    return value, 1
+    return value.translate(str.maketrans('', '', string.punctuation)), 1
 
 
 def word_count(file):
